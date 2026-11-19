@@ -12,3 +12,13 @@ output "location" {
   description = "Verwendete Azure-Region"
   value       = azurerm_resource_group.main.location
 }
+
+output "vnet_name" {
+  description = "Name des VNets"
+  value       = azurerm_virtual_network.main.name
+}
+
+output "subnet_ids" {
+  description = "IDs der Subnetze (Name => ID)"
+  value       = { for name, subnet in azurerm_subnet.main : name => subnet.id }
+}
