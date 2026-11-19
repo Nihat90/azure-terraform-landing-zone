@@ -15,12 +15,7 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "main" {
-  name     = "rg-tflz-dev"
-  location = "germanywestcentral"
-
-  tags = {
-    project    = "azure-terraform-landing-zone"
-    managed_by = "terraform"
-    owner      = "nihat"
-  }
+  name     = "rg-${local.name_suffix}"
+  location = var.location
+  tags     = local.common_tags
 }
